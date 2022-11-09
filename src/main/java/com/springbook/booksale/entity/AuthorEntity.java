@@ -7,13 +7,13 @@ import javax.persistence.*;
 public class AuthorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
 
     public int getId() {
