@@ -7,19 +7,19 @@ import javax.persistence.*;
 public class ChatdetailEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "IdUser")
+    @Column(name = "id_user")
     private int idUser;
     @Basic
     @Column(name = "content")
     private String content;
     @Basic
-    @Column(name = "idChatRoom")
+    @Column(name = "id_chatroom")
     private int idChatRoom;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del", columnDefinition = "bit default false")
     private byte isDel;
 
     public int getId() {

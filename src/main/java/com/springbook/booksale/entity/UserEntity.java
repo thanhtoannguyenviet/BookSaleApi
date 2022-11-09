@@ -7,19 +7,19 @@ import javax.persistence.*;
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "IsAdmin")
+    @Column(name = "is_admin")
     private byte isAdmin;
     @Basic
-    @Column(name = "Password")
+    @Column(name = "password")
     private String password;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del", columnDefinition = "bit default false")
     private byte isDel;
 
     public int getId() {

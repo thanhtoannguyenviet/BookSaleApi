@@ -7,25 +7,25 @@ import javax.persistence.*;
 public class InvoicedetailEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "IdProduct")
+    @Column(name = "id_product")
     private int idProduct;
     @Basic
     @Column(name = "price")
     private int price;
     @Basic
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
     @Basic
-    @Column(name = "IdInvoice")
+    @Column(name = "id_invoice")
     private int idInvoice;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
 
     public int getId() {

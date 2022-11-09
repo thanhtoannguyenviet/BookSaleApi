@@ -8,47 +8,44 @@ import java.sql.Date;
 public class BookEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
-    private int id;
+    @Column(name = "id")
+    private long id;
     @Basic
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "Image")
+    @Column(name = "image")
     private String image;
     @Basic
-    @Column(name = "Description")
+    @Column(name = "description", columnDefinition = "varchar(1000)")
     private String description;
     @Basic
-    @Column(name = "Price")
+    @Column(name = "price")
     private int price;
     @Basic
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
     @Basic
-    @Column(name = "PublicationDate")
+    @Column(name = "publication_date")
     private Date publicationDate;
     @Basic
-    @Column(name = "Page")
+    @Column(name = "page")
     private int page;
     @Basic
-    @Column(name = "IdTopic")
+    @Column(name = "id_topic")
     private int idTopic;
     @Basic
-    @Column(name = "IdPrice")
-    private String idPrice;
-    @Basic
-    @Column(name = "IdAuthor")
+    @Column(name = "id_author")
     private int idAuthor;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -116,13 +113,6 @@ public class BookEntity {
         this.idTopic = idTopic;
     }
 
-    public String getIdPrice() {
-        return idPrice;
-    }
-
-    public void setIdPrice(String idPrice) {
-        this.idPrice = idPrice;
-    }
 
     public int getIdAuthor() {
         return idAuthor;
@@ -159,8 +149,6 @@ public class BookEntity {
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (publicationDate != null ? !publicationDate.equals(that.publicationDate) : that.publicationDate != null)
             return false;
-        if (idPrice != null ? !idPrice.equals(that.idPrice) : that.idPrice != null) return false;
-
         return true;
     }
 }

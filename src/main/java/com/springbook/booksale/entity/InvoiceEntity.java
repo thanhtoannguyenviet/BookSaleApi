@@ -8,37 +8,37 @@ import java.sql.Timestamp;
 public class InvoiceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "Id")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "Created")
+    @Column(name = "created")
     private Timestamp created;
     @Basic
-    @Column(name = "Status")
+    @Column(name = "status")
     private String status;
     @Basic
-    @Column(name = "Total")
+    @Column(name = "total")
     private int total;
     @Basic
-    @Column(name = "Updated")
+    @Column(name = "updated", columnDefinition = "datetime default now()")
     private Timestamp updated;
     @Basic
-    @Column(name = "Name")
+    @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
     @Basic
-    @Column(name = "Address")
+    @Column(name = "address")
     private String address;
     @Basic
-    @Column(name = "shippingFee")
+    @Column(name = "shipping_fee")
     private int shippingFee;
     @Basic
-    @Column(name = "paymentCode")
+    @Column(name = "payment_code")
     private String paymentCode;
     @Basic
-    @Column(name = "isDel")
+    @Column(name = "is_del")
     private boolean isDel;
 
     public int getId() {

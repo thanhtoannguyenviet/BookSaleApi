@@ -8,7 +8,7 @@ public class AuthorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private long id;
     @Basic
     @Column(name = "name")
     private String name;
@@ -16,11 +16,11 @@ public class AuthorEntity {
     @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

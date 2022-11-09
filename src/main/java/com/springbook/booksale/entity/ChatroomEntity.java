@@ -7,10 +7,10 @@ import javax.persistence.*;
 public class ChatroomEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "IdChat")
+    @Column(name = "id_chat")
     private int idChat;
     @Basic
-    @Column(name = "IdUser")
+    @Column(name = "id_user")
     private int idUser;
     @Basic
     @Column(name = "isDel")
