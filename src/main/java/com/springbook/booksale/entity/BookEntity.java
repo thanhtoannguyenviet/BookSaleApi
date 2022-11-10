@@ -1,8 +1,11 @@
 package com.springbook.booksale.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Date;
 
+@Data
 @Entity
 @Table(name = "book", schema = "bookstore", catalog = "")
 public class BookEntity {
@@ -31,15 +34,18 @@ public class BookEntity {
     @Basic
     @Column(name = "page")
     private int page;
-    @Basic
-    @Column(name = "id_topic")
-    private int idTopic;
-    @Basic
-    @Column(name = "id_author")
-    private int idAuthor;
+
     @Basic
     @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_author")
+    private AuthorEntity authorEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_topic")
+    private TopicEntity topicEntity;
 
     public long getId() {
         return id;
@@ -105,22 +111,6 @@ public class BookEntity {
         this.page = page;
     }
 
-    public int getIdTopic() {
-        return idTopic;
-    }
-
-    public void setIdTopic(int idTopic) {
-        this.idTopic = idTopic;
-    }
-
-
-    public int getIdAuthor() {
-        return idAuthor;
-    }
-
-    public void setIdAuthor(int idAuthor) {
-        this.idAuthor = idAuthor;
-    }
 
     public boolean getIsDel() {
         return isDel;
@@ -141,8 +131,6 @@ public class BookEntity {
         if (price != that.price) return false;
         if (quantity != that.quantity) return false;
         if (page != that.page) return false;
-        if (idTopic != that.idTopic) return false;
-        if (idAuthor != that.idAuthor) return false;
         if (isDel != that.isDel) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (image != null ? !image.equals(that.image) : that.image != null) return false;

@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class ChatroomEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_chat")
-    private int idChat;
+    @Column(name = "id")
+    private long id;
     @Basic
     @Column(name = "id_user")
     private int idUser;
@@ -16,12 +16,12 @@ public class ChatroomEntity {
     @Column(name = "isDel")
     private byte isDel;
 
-    public int getIdChat() {
-        return idChat;
+    public long getId() {
+        return id;
     }
 
-    public void setIdChat(int idChat) {
-        this.idChat = idChat;
+    public void setId(long idChat) {
+        this.id = idChat;
     }
 
     public int getIdUser() {
@@ -47,18 +47,10 @@ public class ChatroomEntity {
 
         ChatroomEntity that = (ChatroomEntity) o;
 
-        if (idChat != that.idChat) return false;
+        if (id != that.id) return false;
         if (idUser != that.idUser) return false;
         if (isDel != that.isDel) return false;
 
         return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idChat;
-        result = 31 * result + idUser;
-        result = 31 * result + (int) isDel;
-        return result;
     }
 }
