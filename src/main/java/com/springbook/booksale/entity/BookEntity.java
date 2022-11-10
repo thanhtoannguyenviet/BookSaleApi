@@ -39,11 +39,11 @@ public class BookEntity {
     @Column(name = "is_del", columnDefinition = "bit default false")
     private boolean isDel;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_author")
     private AuthorEntity authorEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_topic")
     private TopicEntity topicEntity;
 
