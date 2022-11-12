@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,6 +33,7 @@ public class InvoiceController {
             @ApiResponse(responseCode = "400", description = "Invalid ID supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Post not found", content = @Content) })
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoiceEntity> create(@RequestBody InvoiceEntity invoiceEntity){
         return new ResponseEntity<>(invoiceService.createInvoice(invoiceEntity), HttpStatus.CREATED);
     }
@@ -44,9 +46,11 @@ public class InvoiceController {
         return ResponseEntity.ok(invoiceService.getInvoiceById(id));
     }
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoiceEntity> update(@RequestBody InvoiceEntity bookEntity,@PathVariable(name="id")long id){
         return ResponseEntity.ok(invoiceService.updateInvoice(bookEntity,id));
     }
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable(name="id")long id){
         invoiceService.deleteInvoiceById(id);

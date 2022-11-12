@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SearchRespository  extends JpaRepository<BookEntity, Long> {
+public interface  SearchRespository  extends JpaRepository<BookEntity, Long> {
     @Query(value = "select b.* from book b " +
             "inner join author a on b.id_author = a.id " +
             "inner join topic t on b.id_topic = t.id " +

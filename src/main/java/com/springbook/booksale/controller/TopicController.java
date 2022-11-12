@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -33,6 +34,7 @@ public class TopicController {
             @ApiResponse(responseCode = "400", description = "Invalid ID supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Post not found", content = @Content) })
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<TopicEntity> create(@RequestBody TopicEntity topicEntity){
         return new ResponseEntity<>(topicService.createTopic(topicEntity), HttpStatus.CREATED);
     }
@@ -44,11 +46,13 @@ public class TopicController {
     public ResponseEntity<TopicEntity> getTopicById(@PathVariable(name="id")long id){
         return ResponseEntity.ok(topicService.getTopicById(id));
     }
+    @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<TopicEntity> updateTopic(@RequestBody TopicEntity topicEntity,@PathVariable(name="id")long id){
         TopicEntity topicRRes = topicService.updateTopic(topicEntity,id);
         return ResponseEntity.ok(topicRRes);
     }
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTopic(@PathVariable(name="id")long id){
         topicService.deleteTopicById(id);

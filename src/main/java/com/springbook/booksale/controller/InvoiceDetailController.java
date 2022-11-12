@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class InvoiceDetailController {
             @ApiResponse(responseCode = "400", description = "Invalid ID supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Post not found", content = @Content) })
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoicedetailEntity> create(@RequestBody InvoicedetailEntity invoicedetailEntity){
         return new ResponseEntity<>(invoiceDetailService.createInvoiceDetail(invoicedetailEntity), HttpStatus.CREATED);
     }
@@ -45,10 +47,12 @@ public class InvoiceDetailController {
         return ResponseEntity.ok(invoiceDetailService.getInvoiceDetail(id));
     }
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoicedetailEntity> update(@RequestBody InvoicedetailEntity bookEntity,@PathVariable(name="id")long id){
         return ResponseEntity.ok(invoiceDetailService.updateInvoiceDetail(bookEntity,id));
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<String> delete(@PathVariable(name="id")long id){
         invoiceDetailService.deleteInvoiceDetailById(id);
         return new ResponseEntity<>("Post entity deleted successfully", HttpStatus.OK);
