@@ -33,7 +33,6 @@ public class InvoiceController {
             @ApiResponse(responseCode = "400", description = "Invalid ID supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Post not found", content = @Content) })
     @PostMapping
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoiceEntity> create(@RequestBody InvoiceEntity invoiceEntity){
         return new ResponseEntity<>(invoiceService.createInvoice(invoiceEntity), HttpStatus.CREATED);
     }

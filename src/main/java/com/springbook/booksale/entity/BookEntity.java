@@ -47,6 +47,10 @@ public class BookEntity {
     @JoinColumn(name = "id_topic")
     private TopicEntity topicEntity;
 
+    @Basic
+    @Column(name = "price_id")
+    private String priceId;
+
     public long getId() {
         return id;
     }
