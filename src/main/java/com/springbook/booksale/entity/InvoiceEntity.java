@@ -9,7 +9,7 @@ public class InvoiceEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
-    private int id;
+    private long id;
     @Basic
     @Column(name = "created")
     private Timestamp created;
@@ -41,11 +41,11 @@ public class InvoiceEntity {
     @Column(name = "is_del")
     private boolean isDel;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

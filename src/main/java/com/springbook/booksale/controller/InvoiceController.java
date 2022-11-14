@@ -45,11 +45,9 @@ public class InvoiceController {
         return ResponseEntity.ok(invoiceService.getInvoiceById(id));
     }
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<InvoiceEntity> update(@RequestBody InvoiceEntity bookEntity,@PathVariable(name="id")long id){
         return ResponseEntity.ok(invoiceService.updateInvoice(bookEntity,id));
     }
-    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable(name="id")long id){
         invoiceService.deleteInvoiceById(id);

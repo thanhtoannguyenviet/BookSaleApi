@@ -33,7 +33,6 @@ public class BookController {
             @ApiResponse(responseCode = "400", description = "Invalid ID supplied", content = @Content),
             @ApiResponse(responseCode = "404", description = "Post not found", content = @Content) })
     @PostMapping
-    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<BookEntity> create(@RequestBody BookEntity bookEntity){
         return new ResponseEntity<>(bookService.createBook(bookEntity), HttpStatus.CREATED);
     }
@@ -45,12 +44,10 @@ public class BookController {
     public ResponseEntity<BookEntity> getById(@PathVariable(name="id")long id){
         return ResponseEntity.ok(bookService.getBookById(id));
     }
-    @PreAuthorize("hasRole('Admin')")
     @PutMapping("/{id}")
     public ResponseEntity<BookEntity> update(@RequestBody BookEntity bookEntity,@PathVariable(name="id")long id){
         return ResponseEntity.ok(bookService.updateBook(bookEntity,id));
     }
-    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable(name="id")long id){
         bookService.deleteBookById(id);
