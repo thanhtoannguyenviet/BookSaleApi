@@ -53,6 +53,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void deleteInvoiceById(long id) {
         InvoiceEntity invoiceEntity = invoiceRespository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Invoice","id",id));
         invoiceEntity.setIsDel(false);
+        invoiceRespository.delete(invoiceEntity);
     }
 
     @Override

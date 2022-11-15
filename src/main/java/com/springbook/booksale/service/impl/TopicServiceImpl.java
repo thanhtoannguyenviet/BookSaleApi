@@ -54,7 +54,7 @@ public class TopicServiceImpl implements TopicService {
     public void deleteTopicById(long id) {
         TopicEntity topicEntity = topicRespository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Topic","id",id));
         topicEntity.setIsDel(false);
-        topicRespository.save(topicEntity);
+        topicRespository.delete(topicEntity);
     }
 
     @Override

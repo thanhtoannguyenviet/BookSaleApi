@@ -54,7 +54,7 @@ public class BookServiceImpl implements BookService {
     public void deleteBookById(long id) {
         BookEntity bookEntity = bookResponsitory.findById(id).orElseThrow(()-> new ResourceNotFoundException("Book","id",id));
         bookEntity.setIsDel(false);
-        bookResponsitory.save(bookEntity);
+        bookResponsitory.delete(bookEntity);
     }
 
     @Override

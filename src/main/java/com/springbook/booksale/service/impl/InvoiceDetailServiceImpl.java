@@ -33,6 +33,7 @@ public class InvoiceDetailServiceImpl implements InvoiceDetailService {
     public void deleteInvoiceDetailById(long id) {
         InvoicedetailEntity invoicedetailEntity = invoiceDetailRespository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Invoice Detail","id",id));
         invoicedetailEntity.setIsDel(false);
+        invoiceDetailRespository.delete(invoicedetailEntity);
     }
 
     @Override

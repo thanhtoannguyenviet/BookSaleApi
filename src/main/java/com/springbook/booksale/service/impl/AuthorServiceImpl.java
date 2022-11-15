@@ -53,7 +53,7 @@ public class AuthorServiceImpl implements AuthorService {
     public void deleteAuthorById(long id) {
         AuthorEntity authorEntity = authorRespository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Author","id",id));
         authorEntity.setIsDel(false);
-        authorRespository.save(authorEntity);
+        authorRespository.delete(authorEntity);
     }
 
     @Override

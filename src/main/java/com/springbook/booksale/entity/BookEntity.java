@@ -26,7 +26,7 @@ public class BookEntity {
     @Column(name = "price")
     private int price;
     @Basic
-    @Column(name = "quantity")
+    @Column(name = "quantity", columnDefinition = "int default 0")
     private int quantity;
     @Basic
     @Column(name = "publication_date")
