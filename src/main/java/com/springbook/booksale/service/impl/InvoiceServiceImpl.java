@@ -64,4 +64,9 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoice.setPhone(invoice.getPhone());
         return invoiceRespository.save(invoice);
     }
+
+    @Override
+    public InvoiceEntity getInvoiceByEmail(String email) {
+        return invoiceRespository.getByEmail(email);
+    }
 }

@@ -53,4 +53,8 @@ public class InvoiceController {
         invoiceService.deleteInvoiceById(id);
         return new ResponseEntity<>("Post entity deleted successfully", HttpStatus.OK);
     }
+    @GetMapping("e/{email}")
+    public ResponseEntity<InvoiceEntity> getByEmail(@PathVariable(name="email")String email){
+        return ResponseEntity.ok(invoiceService.getInvoiceByEmail(email));
+    }
 }

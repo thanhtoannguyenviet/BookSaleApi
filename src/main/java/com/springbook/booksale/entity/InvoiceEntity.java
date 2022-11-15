@@ -26,6 +26,9 @@ public class InvoiceEntity {
     @Column(name = "name")
     private String name;
     @Basic
+    @Column(name = "email")
+    private String email;
+    @Basic
     @Column(name = "phone")
     private String phone;
     @Basic
@@ -40,6 +43,8 @@ public class InvoiceEntity {
     @Basic
     @Column(name = "is_del")
     private boolean isDel;
+
+
 
     public long getId() {
         return id;
@@ -89,6 +94,13 @@ public class InvoiceEntity {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.name = email;
+    }
     public String getPhone() {
         return phone;
     }

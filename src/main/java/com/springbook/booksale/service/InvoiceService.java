@@ -9,4 +9,5 @@ public interface InvoiceService {
     InvoiceEntity getInvoiceById(long id);
     void deleteInvoiceById(long id);
     InvoiceEntity updateInvoice(InvoiceEntity invoiceEntity, long id);
+    InvoiceEntity getInvoiceByEmail(String email);
 }
