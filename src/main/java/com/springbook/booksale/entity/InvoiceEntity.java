@@ -99,7 +99,7 @@ public class InvoiceEntity {
     }
 
     public void setEmail(String email) {
-        this.name = email;
+        this.email = email;
     }
     public String getPhone() {
         return phone;
