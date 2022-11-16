@@ -60,8 +60,11 @@ public class InvoiceServiceImpl implements InvoiceService {
     public InvoiceEntity updateInvoice(InvoiceEntity invoiceEntity, long id) {
         InvoiceEntity invoice = invoiceRespository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Invoice","id",id));
         invoice.setName(invoiceEntity.getName());
-        invoice.setAddress(invoice.getAddress());
-        invoice.setPhone(invoice.getPhone());
+        invoice.setAddress(invoiceEntity.getAddress());
+        invoice.setPhone(invoiceEntity.getPhone());
+        invoice.setShippingFee(invoiceEntity.getShippingFee());
+        invoice.setTotal(invoiceEntity.getTotal());
+        invoice.setStatus(invoiceEntity.getStatus());
         return invoiceRespository.save(invoice);
     }
 
